@@ -1,18 +1,16 @@
 import { http, createConfig } from "wagmi";
 import { base } from "wagmi/chains";
-import { injected } from "wagmi/connectors";
+import { mock } from "wagmi/connectors";
+import { demoConnector } from "./demoConnector/demoConnector";
 
 export const config = createConfig({
   chains: [base],
   connectors: [
-    // mock({ accounts: ["0x818DB96e1b5c64bBE6307c95473E313c743FF7d0"] }),
-    // demoConnector,
-    injected(),
+    // mock({ accounts: ["0x33EB4dEa4931e5d607531Fb08Bd393944aA01Faa"] }),
+    demoConnector,
   ],
   transports: {
-    [base.id]: http(
-      "https://rpc.tenderly.co/fork/5e349ab2-6c3a-4e93-bb22-a2a01742485d"
-    ),
+    [base.id]: http(),
   },
 });
 

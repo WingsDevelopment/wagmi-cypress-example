@@ -3,8 +3,8 @@ import { useAccount, useConnect, useDisconnect, useWriteContract } from "wagmi";
 import { lendingPoolAddress, usdcTokenAddress } from "./contants";
 import { useEffect } from "react";
 // import { demoConnector } from "./demoConnector/demoConnector";
-import { mock } from "wagmi/connectors";
 import { demoConnector } from "./demoConnector/demoConnector";
+import { mock } from "wagmi/connectors";
 
 function App() {
   const account = useAccount();
@@ -12,12 +12,12 @@ function App() {
   const { disconnect } = useDisconnect();
 
   useEffect(() => {
-    // connect({
-    //   // connector: mock({
-    //   //   accounts: ["0x818DB96e1b5c64bBE6307c95473E313c743FF7d0"],
-    //   // }),
-    //   connector: demoConnector,
-    // });
+    connect({
+      // connector: mock({
+      //   accounts: ["0x33EB4dEa4931e5d607531Fb08Bd393944aA01Faa"],
+      // }),
+      connector: demoConnector,
+    });
   }, []);
 
   const { writeContractAsync } = useWriteContract();
