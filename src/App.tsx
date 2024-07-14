@@ -8,8 +8,10 @@ import { mock } from "wagmi/connectors";
 
 function App() {
   const account = useAccount();
-  const { connectors, connect, status, error } = useConnect();
+  const { connectors, connect, status, error, } = useConnect();
   const { disconnect } = useDisconnect();
+
+  const { writeContractAsync } = useWriteContract();
 
   useEffect(() => {
     connect({
@@ -20,8 +22,6 @@ function App() {
     });
   }, []);
 
-  const { writeContractAsync } = useWriteContract();
-
   const approveAsync = async () => {
     const tx = await writeContractAsync({
       address: usdcTokenAddress,
@@ -29,8 +29,15 @@ function App() {
       functionName: "approve",
       args: [lendingPoolAddress, parseEther("1")],
     });
-    console.log({ tx });
   };
+
+  useEffect(() => {
+    if (!account.isConnected) return;
+    //approve
+
+    approveAsync();
+  }, [account.isConnected]);
+
 
   return (
     <>
