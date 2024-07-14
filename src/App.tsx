@@ -13,10 +13,10 @@ function App() {
 
   useEffect(() => {
     connect({
-      // connector: mock({
-      //   accounts: ["0x33EB4dEa4931e5d607531Fb08Bd393944aA01Faa"],
-      // }),
-      connector: demoConnector,
+      connector: mock({
+        accounts: ["0x33EB4dEa4931e5d607531Fb08Bd393944aA01Faa"],
+      }),
+      // connector: demoConnector,
     });
   }, []);
 

@@ -6,8 +6,8 @@ import { demoConnector } from "./demoConnector/demoConnector";
 export const config = createConfig({
   chains: [base],
   connectors: [
-    // mock({ accounts: ["0x33EB4dEa4931e5d607531Fb08Bd393944aA01Faa"] }),
-    demoConnector,
+    mock({ accounts: ["0x33EB4dEa4931e5d607531Fb08Bd393944aA01Faa"] }),
+    // demoConnector,
   ],
   transports: {
     [base.id]: http(),
